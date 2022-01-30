@@ -9,6 +9,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten,Dense
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import CategoricalCrossentropy
+from tensorflow.keras.metrics import CategoricalAccuracy
 plt.style.use('seaborn')
 
 def isMoved():
@@ -169,7 +170,7 @@ def plotHistory(
     
     history = pd.DataFrame(history.history)
     fig, ax = plt.subplots(figsize=figsize, nrows=1,ncols=2)
-    history[['accuracy','val_accuracy']].plot(ax=ax[accPosition],title=accTitle,xlabel=accXlabel,ylabel=accYlabel)
+    history[['categorical_accuracy','val_categorical_accuracy']].plot(ax=ax[accPosition],title=accTitle,xlabel=accXlabel,ylabel=accYlabel)
     history[['loss','val_loss']].plot(ax=ax[lossPosition],title=lossTitle,xlabel=lossXlabel,ylabel=lossYlabel)
     if save:
         if not os.path.exists('Images/'):
@@ -282,7 +283,7 @@ def createModel():
     model.compile(
         optimizer=Adam(),
         loss=CategoricalCrossentropy(),
-        metrics=['accuracy']
+        metrics=[CategoricalAccuracy()]
     )
 
     return model
