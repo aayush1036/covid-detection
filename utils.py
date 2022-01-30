@@ -5,6 +5,10 @@ import numpy as np
 import matplotlib.pyplot as plt 
 from sklearn.model_selection import train_test_split
 import cv2 
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten,Dense
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.losses import CategoricalCrossentropy
 plt.style.use('seaborn')
 
 def isMoved():
@@ -257,3 +261,28 @@ def plotProportions(trainSet,validationSet,testSet,figsize=(12,4),
             os.makedirs('Images/')
         plt.savefig('Images/Proportions.png')
     plt.show()
+
+def createModel():
+    """Creates a model 
+
+    Returns:
+        tf.keras.models.Sequential: The created model
+    """    
+    model = Sequential(layers=[
+        Conv2D(filters=32, kernel_size=(3,3),activation='relu',input_shape=(224,224,3)),
+        MaxPooling2D(),
+        Conv2D(filters=64, kernel_size=(3,3),activation='relu'),
+        MaxPooling2D(),
+        Dropout(rate=0.3),
+        Flatten(),
+        Dense(units=128,activation='relu'),
+        Dense(units=2, activation='softmax')
+    ])
+
+    model.compile(
+        optimizer=Adam(),
+        loss=CategoricalCrossentropy(),
+        metrics=['accuracy']
+    )
+
+    return model
