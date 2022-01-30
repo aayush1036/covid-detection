@@ -11,3 +11,19 @@ Basically this is what we do<br>
 
 Using <br>
 <img src="Images/nn.gif" height=400px width=800px>
+
+And we are damn good at it <br>
+<table>
+<tr>
+<td>Train</td>
+<td>93.6%</td>
+</tr>
+<tr>
+<td>Validation</td>
+<td>93.1%</td>
+</tr>
+<tr>
+<td>Test</td>
+<td>94%</td>
+</tr>
+</table>
