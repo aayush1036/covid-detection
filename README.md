@@ -9,9 +9,6 @@ Data - We have taken the <a href="https://www.kaggle.com/ahemateja19bec1025/covi
 Basically this is what we do<br>
 <img src="Images/flowchart.jpg" height=400px width=800px>
 
-Using <br>
-<img src="Images/nn.gif" height=400px width=800px>
-
 And we are damn good at it <br>
 <table>
 <tr>
