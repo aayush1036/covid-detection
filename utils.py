@@ -3,8 +3,8 @@ import shutil
 import pandas as pd 
 import numpy as np 
 import matplotlib.pyplot as plt 
+from tensorflow.keras.preprocessing.image import load_img
 from sklearn.model_selection import train_test_split
-import cv2 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten,Dense
 from tensorflow.keras.optimizers import Adam
@@ -236,9 +236,7 @@ def predictNew(model:Sequential,filepath:str,targetSize=(224,224),labelDict=None
     Returns:
         str: Predtcion made by the model
     """    
-    img = cv2.imread(filepath)
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    img = cv2.resize(img, dsize=targetSize)
+    img = load_img(path=filepath, target_size=targetSize)
     img = np.expand_dims(img, axis=0)
     pred = model.predict(img)
     pred = np.argmax(pred, axis=1)[0]
