@@ -10,13 +10,22 @@
 </head>
 
 <body>
-    <form action="{{url_for('predict')}}" method="POST" enctype="multipart/form-data">
+    <h2 class="text-center">Predict from X-ray</h2>
+    <form action="/GetData" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="formFileSm" class="form-label">Small file input example</label>
             <input class="form-control form-control-sm" id="formFileSm" type="file" name="image">
         </div>
         <button type="submit" class="btn btn-primary">Upload</button>
     </form>
+
+    {% if pred and imgPath %}
+        <h3 class="text-center">
+            The model predicted {{pred}}
+        </h3>
+        <br>
+        <img src="{{imgPath}}" alt="Input image" height="224px" width="224px">
+    {% endif %}
 </body>
 
 </html>

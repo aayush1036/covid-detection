@@ -1,16 +1,12 @@
 h1{
     font-size: 5.625rem;
-    font-family: 'Sacramento',cursive;
-    margin: 50px auto 0 auto;
+    font-family: 'Roboto', sans-serif;
     color: #66BFBF;
     line-height: 2;
 }
 .top-container{
     background-color: #E4F9F5;
     position: relative;
-}
-p{
-    line-height: 2;
 }
 
 h2{
@@ -26,9 +22,6 @@ hr {
     width: 4%;
     margin: 50px auto;
 }
-.pro{
-    text-decoration: underline;
-}
 body{
     margin:0;
     text-align: center;
@@ -38,43 +31,13 @@ body{
     width: 60%;
     margin: 80px auto 80px auto;
     text-align: left;
-
 }
 
 h3{
     font-family: 'Montserrat', sans-serif;
     color: #11999E;
 }
-.result-image{
-    height: 180px;
-    width: 320px;
-}
-.middle-container{
-    margin: 100px 0;
 
-}
-
-.intro{
-    width: 30%;
-    margin: auto;
-}
-
-.hobbies{
-    width: 50%;
-    margin: 50px auto 50px auto;
-    text-align: center;
-}
-.bnr-icons{
-    color: black;
-    font-size: 25px;
-    background: white;
-    padding-left: 25px;
-    border-radius: 50%
-}
-.hobby{
-    height: 400px;
-    width: 372px;
-}
 .contact{
     width: 40%;
     margin: 40px auto 60px;
@@ -89,23 +52,11 @@ h3{
 a:hover{
     color: #EAF6F6;
 }
-.python_skill:hover{
-    color: #d8ebb5;
-}
 a{
     color: #11999E;
     font-family: 'Montserrat', sans-serif;
     size:3;
     text-decoration: none;
-}
-.profile{
-    padding-bottom: 10px;
-}
-.insta-profile{
-    margin-left: 25px;
-}
-.hobbies-heading{
-    padding: 0px;
 }
 .copyright{
     color: white;
@@ -130,7 +81,6 @@ a{
 .footer-link{
     color: white;
     font-family: 'Montserrat', sans-serif;
-    /* margin: 10px 20px; */
     size:3;
     text-decoration: none;
     margin: 10px 20px;

@@ -18,11 +18,11 @@ def hello():
     return render_template('index.html')
 
 
-@app.route('/GetData')
+@app.route('/GetData', methods=['GET'])
 def getData():
     return render_template('getData.html')
 
-@app.route('/Predict',methods=['GET','POST'])
+@app.route('/GetData',methods=['POST'])
 def predict():
     if request.method == 'POST':
         if request.files:
@@ -31,7 +31,7 @@ def predict():
             image.save(imgPath)
             pred = predictNew(model=model, filepath=imgPath, labelDict=predictionDict)
             print(pred)
-            return render_template('predict.html',pred=pred,imgPath=imgPath)
+            return render_template('getData.html',pred=pred,imgPath=imgPath)
             
 
 if __name__ == '__main__':
