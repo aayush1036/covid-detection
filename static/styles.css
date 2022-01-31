@@ -45,18 +45,6 @@ h3{
     font-family: 'Montserrat', sans-serif;
     color: #11999E;
 }
-.LeftAlign{
-    height: 375px;
-    width: 576px;
-    float: left;
-    margin-right: 30px;
-}
-.RightAlign{
-    height: 375px;
-    width: 576px;
-    float: right;
-    margin-left: 30px;
-}
 .result-image{
     height: 180px;
     width: 320px;
@@ -107,7 +95,6 @@ a:hover{
 a{
     color: #11999E;
     font-family: 'Montserrat', sans-serif;
-    /* margin: 10px 20px; */
     size:3;
     text-decoration: none;
 }
@@ -151,37 +138,4 @@ a{
 
 .footer-link:hover{
     color: #EAF6F6;
-}
-
-.dataframe{
-    margin-left: 30%;
-    margin-right: 30%;
-    border: 2px;
-    padding-bottom: 10%;
-}
-
-.table-data{
-    text-align: center;
-}
-
-.displayHeading{
-    padding-left: 400px;
-    padding-right: 400px;
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-.homebutton{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.thankyouimage{
-    height: 288px;
-    width: 441px;
-}
-
-.other-image{
-    height: 768px;
-    width: 1000px;
 }

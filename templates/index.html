@@ -108,7 +108,7 @@
                 validation set and 90% data in the training set</li>
         </ol>
         Poportion of train and test data are shown in the chart below
-        <img src="static/Images/Proportions.png" alt="Proportion of data in train and test sets">
+        <img src="static/Images/Proportions.png" alt="Proportion of data in train and test sets" class="result-image">
     </div>
     <hr>
     <div class="city-row" id="Performance">
@@ -135,11 +135,11 @@
     </div>
     <hr>
     <div class="city-row" id="tryItOut">
-        <h2>Try iy out</h2>
+        <h2>Try it out</h2>
         If you are impressed with our performance and would like to try out our model, then please click the button
         below to upload your X-rays and get the predictions
         <div class="predictButton" id="predict">
-            <a class="btn btn-dark predictButton" href="#">PREDICT</a>
+            <a class="btn btn-dark predictButton" href="{{url_for('getData')}}">PREDICT</a>
         </div>
     </div>
 

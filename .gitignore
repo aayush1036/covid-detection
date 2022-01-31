@@ -1,6 +1,6 @@
 archive.zip
 archive/
 Dataset/
-bestModel.h5
 __pycache__/
 env/
+static/uploads/
