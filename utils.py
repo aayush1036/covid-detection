@@ -10,7 +10,21 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten,Dense
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import CategoricalCrossentropy
 from tensorflow.keras.metrics import CategoricalAccuracy
+import tensorflow as tf 
 plt.style.use('seaborn')
+
+def supportsGPU()->bool:
+    """Checks whether the system supports GPU or not 
+
+    Returns:
+        bool: Returns True if the system supports GPU else returns False
+    """       
+    numGPU = len(tf.config.list_physical_devices('GPU'))
+    GPUSupport = tf.test.is_built_with_gpu_support()
+    if numGPU>=1 and GPUSupport:
+        return True
+    else:
+        return False
 
 def isMoved():
     """Checks if the data is already moved to train, validate and test folders
@@ -103,11 +117,11 @@ def moveFiles(
     print('Created folders successfully')
 
 def seeExamples(
-    generator,
+    generator:tf.keras.preprocessing.image.DirectoryIterator,
     figsize=(16,16),
     nrows=4,
     ncols=4,
-    labelDict = None):
+    labelDict = None)->None:
     """Plot the examples from the generator
 
     Args:
@@ -139,7 +153,7 @@ def seeExamples(
     plt.show()
 
 def plotHistory(
-    history,
+    history:tf.keras.callbacks.History,
     figsize=(16,6),
     accTitle = 'Accuracy over epochs',
     accXlabel='Epochs',
@@ -149,11 +163,11 @@ def plotHistory(
     lossYlabel='Loss',
     accPosition=0,
     lossPosition=1,
-    save=True):
+    save=True)->None:
     """Plots the history for better visualization of training
 
     Args:
-        history (dict): The dictionary containing accuracy and loss for the epochs
+        history (tf.keras.callbacks.history): The dictionary containing accuracy and loss for the epochs
         figsize (tuple, optional): Size of figure. Defaults to (16,6).
         accTitle (str, optional): Title for accuracy chart. Defaults to 'Accuracy over epochs'.
         accXlabel (str, optional): xlabel for accuracy chart. Defaults to 'Epochs'.
@@ -181,7 +195,11 @@ def plotHistory(
 
 
 
-def evaluateModel(model,trainSet,validationSet,testSet):
+def evaluateModel(
+    model:Sequential,
+    trainSet:tf.keras.preprocessing.image.DirectoryIterator,
+    validationSet:tf.keras.preprocessing.image.DirectoryIterator,
+    testSet:tf.keras.preprocessing.image.DirectoryIterator)->None:
     """Evaluate the model on train, validation and test set and print accuracy
 
     Args:
@@ -200,7 +218,7 @@ def evaluateModel(model,trainSet,validationSet,testSet):
     print(f'The accuracy on validation set is {valAcc:.3%}')
     print(f'The accuracy on test set is {testAcc:.3%}')
 
-def predictNew(model,filepath,targetSize=(224,224),labelDict=None):
+def predictNew(model:Sequential,filepath:str,targetSize=(224,224),labelDict=None)->str:
     """Predict a new x-ray
 
     Args:
@@ -223,7 +241,11 @@ def predictNew(model,filepath,targetSize=(224,224),labelDict=None):
     else:
         return pred
 
-def plotProportions(trainSet,validationSet,testSet,figsize=(12,4),
+def plotProportions(
+    trainSet:tf.keras.preprocessing.image.DirectoryIterator,
+    validationSet:tf.keras.preprocessing.image.DirectoryIterator,
+    testSet:tf.keras.preprocessing.image.DirectoryIterator,
+    figsize=(12,4),
     trainPos = 0,
     validationPos = 1,
     testPos = 2,
@@ -231,7 +253,7 @@ def plotProportions(trainSet,validationSet,testSet,figsize=(12,4),
     validationTitle='Proportion of cases in validation set',
     testTitle='Porportion of cases in test set',
     precision=0,
-    save=True):
+    save=True)->None:
     """Plots the proportion of covid positive and negative cases
 
     Args:
@@ -263,7 +285,7 @@ def plotProportions(trainSet,validationSet,testSet,figsize=(12,4),
         plt.savefig('Images/Proportions.png')
     plt.show()
 
-def createModel():
+def createModel()->Sequential:
     """Creates a model 
 
     Returns:
