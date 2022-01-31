@@ -156,7 +156,7 @@ def seeExamples(
     plt.tight_layout()
     if save:
         if fileName is not None:
-            plt.savefig(f'Images/{fileName}')
+            plt.savefig(f'static/Images/{fileName}')
         else:
             raise ValueError('fileName cannot be None')   
     plt.show()
@@ -196,10 +196,7 @@ def plotHistory(
     history[['categorical_accuracy','val_categorical_accuracy']].plot(ax=ax[accPosition],title=accTitle,xlabel=accXlabel,ylabel=accYlabel)
     history[['loss','val_loss']].plot(ax=ax[lossPosition],title=lossTitle,xlabel=lossXlabel,ylabel=lossYlabel)
     if save:
-        if not os.path.exists('Images/'):
-            os.makedirs('Images/')
-        savePath = 'Images/history.png'
-        plt.savefig(savePath)
+        plt.savefig('static/Images/history.png')
     plt.show()
 
 
@@ -289,9 +286,7 @@ def plotProportions(
     validationProportions.plot(kind='pie',ax=ax[validationPos],title=validationTitle,autopct=f'%1.{precision}f%%')
     testProportions.plot(kind='pie',ax=ax[testPos],title=testTitle,autopct=f'%1.{precision}f%%')
     if save:
-        if not os.path.exists('Images/'):
-            os.makedirs('Images/')
-        plt.savefig('Images/Proportions.png')
+        plt.savefig('static/Images/Proportions.png')
     plt.show()
 
 def createModel()->Sequential:
