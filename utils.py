@@ -119,17 +119,21 @@ def moveFiles(
 def seeExamples(
     generator:tf.keras.preprocessing.image.DirectoryIterator,
     figsize=(16,16),
-    nrows=4,
-    ncols=4,
-    labelDict = None)->None:
+    nrows=3,
+    ncols=3,
+    labelDict = None,
+    save=True,
+    fileName=None)->None:
     """Plot the examples from the generator
 
     Args:
         generator (DirectoryIterator): The generator you want to see the examples from
         figsize (tuple, optional): The size of matplotlib figure. Defaults to (16,16).
-        nrows (int, optional): The number of rows in the figure. Defaults to 4.
-        ncols (int, optional): The number of columns in the figure. Defaults to 4.
+        nrows (int, optional): The number of rows in the figure. Defaults to 3.
+        ncols (int, optional): The number of columns in the figure. Defaults to 3.
         labelDict (dict, optional): The dictionary containing id as keys and labels as values. Defaults to None.
+        save (bool, optional): Saves the figure to the device if set to True. Defaults to True.
+        fileName (str, optional): The filepath where you want to save the figure. Defaults to None.
     Returns:
         None
     """    
@@ -150,6 +154,11 @@ def seeExamples(
             ax[i,j].imshow(image)
             ax[i,j].set_title(labelDict[label])
     plt.tight_layout()
+    if save:
+        if fileName is not None:
+            plt.savefig(f'Images/{fileName}')
+        else:
+            raise ValueError('fileName cannot be None')   
     plt.show()
 
 def plotHistory(
@@ -307,5 +316,4 @@ def createModel()->Sequential:
         loss=CategoricalCrossentropy(),
         metrics=[CategoricalAccuracy()]
     )
-
     return model

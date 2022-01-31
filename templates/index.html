@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>DLProject</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sacramento&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4231346c72.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+</head>
+
+<body>
+    <div class="top-container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="">DLProject</a>
+                <ul class="navbar-nav ml-auto">
+
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#About">About Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Introduction">Introduction</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#KYD">Know Your Data</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Performance">Performance</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tryItOut">Try it out</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-me">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <h1>DLProject</h1>
+    </div>
+
+    <hr>
+    <div class="city-row" id="About">
+        <h2>About us</h2>
+        <p>This project is is done by a group of four members:
+        <ol>
+            <li>Aryaman Gautam (J001)</li>
+            <li>Aayushmaan Jain (J022)</li>
+            <li>Pratyush Patro (J047)</li>
+            <li>Milindi Shah (J057)</li>
+        </ol>
+        </p>
+    </div>
+    <hr>
+
+    <div class="city-row" id="Introduction">
+        <h2>Introduction</h2>
+        This project aims for automating the process of detecting covid from medical x-rays and building a web
+        app
+        where we can upload the x-ray and detect covid as reports take some time to generate, we can give the
+        patient some idea instantly so they can get treatment accordingly, main aim is to speed up the process of covid
+        detection. <br>
+        <br>
+        So basically...... This image does a good job in summarizing what we do.
+        <img src="static/Images/flowchart.jpg" alt="flowchart" height="400px" width="800px">
+    </div>
+    <hr>
+    <div class="city-row" id="KYD">
+        <h2>Know Your Data</h2>
+        The dataset used in this project is sourced from Kaggle which is the <a
+            href="https://www.kaggle.com/ahemateja19bec1025/covid-xray-dataset">Covid chest x-ray dataset</a>
+        Since the data was not in a desirable format, we have converted it into a desriable format and created training,
+        testing and validation sets, to do this, we have applied two successive train test splits, which are:
+        <ol>
+            <li>Train test split on the entire data to create training and testing sets, with 20% data in the testing
+                set and 80% data in the training set</li>
+            <li>Train test split on the training set to create training and validation sets, with 10% data in the
+                validation set and 90% data in the training set</li>
+        </ol>
+        Poportion of train and test data are shown in the chart below
+        <img src="static/Images/Proportions.png" alt="Proportion of data in train and test sets">
+    </div>
+    <hr>
+    <div class="city-row" id="Performance">
+        <h2>Performance</h2>
+        And, our model performed well on all the sets,the accuracies are:<br>
+        <table>
+            <tr>
+                <td>Dataset</td>
+                <td>Accuracy</td>
+            </tr>
+            <tr>
+                <td>Train</td>
+                <td>94.15%</td>
+            </tr>
+            <tr>
+                <td>Validation</td>
+                <td>93.1%</td>
+            </tr>
+            <tr>
+                <td>Test</td>
+                <td>93.7%</td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div class="city-row" id="tryItOut">
+        <h2>Try iy out</h2>
+        If you are impressed with our performance and would like to try out our model, then please click the button
+        below to upload your X-rays and get the predictions
+        <div class="predictButton" id="predict">
+            <a class="btn btn-dark predictButton" href="#">PREDICT</a>
+        </div>
+    </div>
+</body>
+
+</html>
