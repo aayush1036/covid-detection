@@ -224,7 +224,7 @@ def evaluateModel(
     print(f'The accuracy on validation set is {valAcc:.3%}')
     print(f'The accuracy on test set is {testAcc:.3%}')
 
-def predictNew(model:Sequential,filepath:str,targetSize=(224,224),labelDict=None)->str:
+def predictNew(model:Sequential,filepath:str,targetSize=(224,224),labelDict=None,surety=False)->str:
     """Predict a new x-ray
 
     Args:
@@ -239,12 +239,15 @@ def predictNew(model:Sequential,filepath:str,targetSize=(224,224),labelDict=None
     img = load_img(path=filepath, target_size=targetSize)
     img = np.expand_dims(img, axis=0)
     pred = model.predict(img)
-    pred = np.argmax(pred, axis=1)[0]
-    if labelDict is not None:
-        return labelDict[pred]
+    predIdx = np.argmax(pred, axis=1)[0]
+    if surety and labelDict:
+        confidence = pred[0][predIdx]
+        message = f'The model predicted {labelDict[predIdx]} with {confidence:.3%} confidence'
+        return message
+    if labelDict:
+        return labelDict[predIdx]
     else:
-        return pred
-
+        return predIdx
 def plotProportions(
     trainSet:tf.keras.preprocessing.image.DirectoryIterator,
     validationSet:tf.keras.preprocessing.image.DirectoryIterator,
@@ -310,3 +313,8 @@ def createModel()->Sequential:
         metrics=[CategoricalAccuracy()]
     )
     return model
+
+def clearFiles(path='static/uploads'):
+    files = os.listdir(path)
+    for file in files:
+        os.remove(os.path.join(path,file))
