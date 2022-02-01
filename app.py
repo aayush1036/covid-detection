@@ -14,7 +14,7 @@ if not os.path.exists(uploadPath):
     os.makedirs(uploadPath)
 
 @app.route('/')
-def hello():
+def home():
     return render_template('index.html')
 
 
