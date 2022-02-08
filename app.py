@@ -1,6 +1,6 @@
 from flask import Flask,render_template,url_for,request,redirect
 import os
-from utils import createModel,predictNew
+from deployUtils import createModel,predictNew
 model = createModel()
 model.load_weights('bestModel.h5')
 predictionDict = {
