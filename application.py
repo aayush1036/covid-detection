@@ -8,7 +8,7 @@ predictionDict = {
     1:'Without Covid'
 }
 allowedFileTypes = ['jpg','png','jpeg']
-app = Flask(__name__)
+application = app = Flask(__name__)
 uploadPath = 'static/uploads'
 if not os.path.exists(uploadPath):
     os.makedirs(uploadPath)
