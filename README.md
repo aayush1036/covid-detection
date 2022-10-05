@@ -26,3 +26,8 @@ And we are damn good at it <br>
 <td>93.7%</td>
 </tr>
 </table>
+
+Project by:
+
+<a href="mailto:aayushmaan1306@gmail.com">Aayushmaan Jain</a> <br>
+<a href="patro.pratyush51@nmims.edu.in">Pratyush Patro</a>
